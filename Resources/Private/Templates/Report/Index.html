@@ -1,0 +1,38 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+    xmlns:be="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+<f:layout name="Module"/>
+
+<f:section name="Content">
+    <h1>Translation Usage</h1>
+
+    <h3>Total count</h3>
+    <p>Total count: {count}</p>
+
+    <h3>Most duplicateds</h3>
+    <f:for each="{duplicates}" as="duplicate">
+        <h4>Label: {duplicate.translation} ({duplicate.count})</h4>
+        <table class="table table-condensed table-striped">
+            <tbody>
+            <tr>
+                <th>package</th>
+                <th>path</th>
+                <th>key</th>
+            </tr>
+            <f:for each="{duplicate.usages}" as="usage">
+                <tr>
+                    <td>{usage.package}</td>
+                    <td>{usage.path}</td>
+                    <td>{usage.translation_key}</td>
+                </tr>
+            </f:for>
+            </tbody>
+        </table>
+    </f:for>
+</f:section>
+
+</html>
